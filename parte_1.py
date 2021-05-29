@@ -65,7 +65,7 @@ maior_renda = dados.Renda.max()
 
 # print(menor_renda, maior_renda)
 
-# os valores enter 0 e 200000 foram passados durante o curso
+# os valores entre 0 e 200000 foram passados durante o curso
 classes_de_renda = [menor_renda, 1576, 3152, 7880, 15760, maior_renda]
 labels_das_classes = ['E', 'D', 'C', 'B', 'A']
 

@@ -33,5 +33,5 @@ percentual = pd.value_counts(
 distribuicao_frequencias_amplitude_fixa = pd.DataFrame(
                                                        {'Frequência': frequencia,
                                                         'Porcentagem (%)': percentual}
-                                                       )
+                                                      )
 print(distribuicao_frequencias_amplitude_fixa)
