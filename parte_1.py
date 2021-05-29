@@ -47,8 +47,7 @@ frequencia.rename(columns=cor, inplace=True)
 
 percentual_cor = pd.crosstab(dados.Sexo,
                              dados.Cor,
-                             normalize=True
-                             )*100
+                             normalize=True)*100
 percentual_cor.rename(index=sexo, inplace=True)
 percentual_cor.rename(columns=cor, inplace=True)
 # print(percentual_cor)
@@ -56,8 +55,39 @@ percentual_cor.rename(columns=cor, inplace=True)
 percentual_renda = pd.crosstab(dados.Sexo,
                                dados.Cor,
                                aggfunc='mean',
-                               values=dados.Renda
-                               )
+                               values=dados.Renda)
 percentual_renda.rename(index=sexo, inplace=True)
 percentual_renda.rename(columns=cor, inplace=True)
-print(percentual_renda)
+# print(percentual_renda)
+
+menor_renda = dados.Renda.min()
+maior_renda = dados.Renda.max()
+
+# print(menor_renda, maior_renda)
+
+# os valores enter 0 e 200000 foram passados durante o curso
+classes_de_renda = [0, 1576, 3152, 7880, 15760, 200000]
+labels_das_classes = ['E', 'D', 'C', 'B', 'A']
+
+frequencia_por_renda = pd.value_counts(
+                                     pd.cut(x=dados.Renda,
+                                            bins=classes_de_renda,
+                                            labels=labels_das_classes,
+                                            include_lowest=True))
+# print(frequencia_por_renda)
+
+percentual_por_renda = pd.value_counts(
+                                     pd.cut(x=dados.Renda,
+                                            bins=classes_de_renda,
+                                            labels=labels_das_classes,
+                                            include_lowest=True),
+                                     normalize=True)*100
+# print(percentual_por_renda)
+
+distribuicao_de_frequencias_quantitativas = pd.DataFrame(
+                                                         {'Frequência':
+                                                          frequencia_por_renda,
+                                                          'Porcentagem (%)':
+                                                          percentual_por_renda}
+                                                          ).sort_index(ascending=False)
+print(distribuicao_de_frequencias_quantitativas)
