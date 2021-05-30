@@ -12,28 +12,11 @@ df = pd.DataFrame(data={'Fulano': [8, 10, 4, 8, 6, 10, 8],
                          'Física',
                          'Química'])
 
-# montando dataframe das notas do Fulano
 notas_fulano = df[['Fulano']]
-
 nota_media_fulano = notas_fulano.mean()[0]
-
 notas_fulano['Desvio'] = notas_fulano['Fulano'] - nota_media_fulano
 notas_fulano['|Desvio|'] = notas_fulano['Desvio'].abs()
+notas_fulano['(Desvio)^2'] = notas_fulano['Desvio'].pow(2)
 
-desvio_medio_absoluto_fulano = notas_fulano['Fulano'].mad()
-# print(desvio_medio_absoluto_fulano)
-
-notas_sicrano = df[['Sicrano']]
-
-nota_media_sicrano = notas_sicrano.mean()[0]
-
-notas_sicrano['Desvio'] = notas_sicrano['Sicrano'] - nota_media_sicrano
-notas_sicrano['|Desvio|'] = notas_sicrano['Desvio'].abs()
-
-desvio_medio_absoluto_sicrano = notas_sicrano['Sicrano'].mad()
-# print(desvio_medio_absoluto_sicrano)
-
-if desvio_medio_absoluto_fulano > desvio_medio_absoluto_sicrano:
-    print('Fulano teve um desvio médio absoluto maior que Sicrano')
-else:
-    print('Sicrano teve um desvio médio absoluto maior que Fulano')
+variancia_notas_fulano = notas_fulano['Fulano'].var()
+print(variancia_notas_fulano)
