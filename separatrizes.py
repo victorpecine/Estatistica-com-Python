@@ -12,9 +12,9 @@ decis_renda = dados.Renda.quantile([i / 10 for i in range(1, 10)])
 
 percentis_renda = dados.Renda.quantile([i / 100 for i in range(1, 100)])
 
-ax = sns.distplot(dados.Idade,
-                  hist_kws={'cumulative': True},
-                  kde_kws={'cumulative': True})
+ax = sns.displot(dados.Idade,
+                 hist_kws={'cumulative': True},
+                 kde_kws={'cumulative': True})
 ax.figure.set_size_inches(14, 6)
 ax.set_title('Distribuição de Frequências Acumuladas', fontsize=18)
 ax.set_ylabel('Acumulado', fontsize=14)
