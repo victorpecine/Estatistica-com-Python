@@ -94,4 +94,14 @@ estatisticas_renda_sexo_cor = pd.crosstab(dados.Cor,
                                                    'max'})
 estatisticas_renda_sexo_cor.rename(index=cor, inplace=True)
 estatisticas_renda_sexo_cor.rename(columns=sexo, inplace=True)
-print(estatisticas_renda_sexo_cor)
+# print(estatisticas_renda_sexo_cor)
+
+dispersao_renda_sexo_cor = pd.crosstab(dados.Cor,
+                                       dados.Sexo,
+                                       values=dados.Renda,
+                                       aggfunc={'mad',
+                                                'var',
+                                                'std'}).round(2)
+dispersao_renda_sexo_cor.rename(index=cor, inplace=True)
+dispersao_renda_sexo_cor.rename(columns=sexo, inplace=True)
+print(dispersao_renda_sexo_cor)
