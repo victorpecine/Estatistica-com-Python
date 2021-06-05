@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+from scipy import stats
 
 dados = pd.read_csv('dados.csv')
 
@@ -104,4 +105,17 @@ dispersao_renda_sexo_cor = pd.crosstab(dados.Cor,
                                                 'std'}).round(2)
 dispersao_renda_sexo_cor.rename(index=cor, inplace=True)
 dispersao_renda_sexo_cor.rename(columns=sexo, inplace=True)
-print(dispersao_renda_sexo_cor)
+# print(dispersao_renda_sexo_cor)
+
+# desafio: percentual de pessoas que ganham R$ 788,00 ou menos
+percentual_desafio = stats.percentileofscore(dados.Renda, 788, kind='weak')
+# weak indica ingual ou menor
+print(f'{percentual_desafio:.2f}% das pessoas cadastradas ganham R$ 788,00 ou menos')
+
+# desafio: qual o valor máximo de renda de 99% das pessoas cadastradas?
+valor_maximo_desafio = dados.Renda.quantile(.99)
+print(f'A renda máxima de 99% das pessoas cadastradas é R$ {valor_maximo_desafio:.2f}')
+
+# desafio: qual o valor máximo de renda de 50% das pessoas cadastradas?
+valor_maximo_desafio = dados.Renda.quantile(.5)
+print(f'A renda máxima de 50% das pessoas cadastradas é R$ {valor_maximo_desafio:.2f}')
