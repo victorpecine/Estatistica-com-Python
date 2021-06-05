@@ -72,5 +72,26 @@ percentual_sexo_cor = pd.crosstab(dados.Sexo,
 percentual_sexo_cor.rename(index=sexo, inplace=True)
 percentual_sexo_cor.rename(columns=cor, inplace=True)
 
-print(percentual_sexo_cor)
+# print(percentual_sexo_cor)
 
+media_rendas = dados.Renda.mean()
+
+mediana_rendas = dados.Renda.median()
+
+moda_rendas = dados.Renda.mode()[0]
+
+desvio_medio_abs_rendas = dados.Renda.mad()
+
+variancia_renda = dados.Renda.var()
+
+desvio_padrao_rendas = dados.Renda.std()
+
+estatisticas_renda_sexo_cor = pd.crosstab(dados.Cor,
+                                          dados.Sexo,
+                                          values=dados.Renda,
+                                          aggfunc={'mean',
+                                                   'median',
+                                                   'max'})
+estatisticas_renda_sexo_cor.rename(index=cor, inplace=True)
+estatisticas_renda_sexo_cor.rename(columns=sexo, inplace=True)
+print(estatisticas_renda_sexo_cor)
